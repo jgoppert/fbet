@@ -14,7 +14,7 @@ namespace fbet_server
       m_tfPointCloudSub(NULL),
       m_octree(NULL),
       m_maxRange(-1.0),
-      m_worldFrameId("/map"), m_baseFrameId("base_footprint"),
+      m_worldFrameId("map"), m_baseFrameId("base_link"),
       m_res(0.05),
       m_treeDepth(0),
       m_maxTreeDepth(0),
@@ -25,8 +25,8 @@ namespace fbet_server
       m_occupancyMinZ(-std::numeric_limits<double>::max()),
       m_occupancyMaxZ(std::numeric_limits<double>::max()),
       m_filterSpeckles(false), 
-      m_compressMap(true),
-      lut(16)
+      m_compressMap(true)
+      //lut(16)
       {
           ros::NodeHandle private_nh(private_nh_);
           private_nh.param("frame_id", m_worldFrameId, m_worldFrameId);
@@ -130,7 +130,7 @@ namespace fbet_server
           OcTreeKey neighbor_key;
           for (int i = 0; i < 26; i++) 
           {
-              lut.genNeighborKey(start_key, i, neighbor_key);
+              //lut.genNeighborKey(start_key, i, neighbor_key);
 	point3d query = m_octree->keyToCoord(neighbor_key);
 	occupiedNeighbor.push_back(query);
 

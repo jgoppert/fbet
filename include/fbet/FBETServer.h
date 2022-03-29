@@ -28,7 +28,7 @@
 #include <octomap/OcTreeKey.h>
 #include <octomap/octomap.h>
 #include <octomap/OcTree.h>
-#include <octomap/OcTreeLUT.h>
+//#include <octomap/OcTreeLUT.h>
 
 #include <vector>
 #include <stdio.h>
@@ -123,7 +123,7 @@ namespace fbet_server
 
 	KeySet frontier_cells;
        KeySet candidate_cells;
-	octomap::OcTreeLUT lut;
+	//octomap::OcTreeLUT lut;
 	ofstream logfile;
 	point3d best_frontiergoal;
     };
