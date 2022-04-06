@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.0.2)
 project(fbet)
 
 ## Find catkin macros and libraries
@@ -24,14 +24,14 @@ find_package(catkin REQUIRED COMPONENTS ${PACKAGE_DEPENDENCIES})
 
 find_package(PCL REQUIRED QUIET COMPONENTS common sample_consensus io segmentation filters)
 
-find_package(octomap REQUIRED)
+#find_package(octomap REQUIRED)
 add_definitions(-DOCTOMAP_NODEBUGOUT)
 
 include_directories(
   include
   ${catkin_INCLUDE_DIRS}
   ${PCL_INCLUDE_DIRS}
-  ${OCTOMAP_INCLUDE_DIRS}
+  #${OCTOMAP_INCLUDE_DIRS}
 )
 
 
@@ -39,7 +39,7 @@ catkin_package(
   INCLUDE_DIRS include
   LIBRARIES ${PROJECT_NAME}
   CATKIN_DEPENDS ${PACKAGE_DEPENDENCIES}
-  DEPENDS octomap PCL
+  #DEPENDS octomap PCL
 )
 
 set(LINK_LIBS
@@ -50,7 +50,7 @@ set(LINK_LIBS
 
 add_library(${PROJECT_NAME} src/FBETServer.cpp )
 target_link_libraries(${PROJECT_NAME} ${LINK_LIBS})
-add_dependencies(${PROJECT_NAME} ${PROJECT_NAME}_gencfg)
+#add_dependencies(${PROJECT_NAME} ${PROJECT_NAME}_gencfg)
 
 add_executable(fbet_node src/fbet_node.cpp)
 target_link_libraries(fbet_node ${PROJECT_NAME} ${LINK_LIBS})
